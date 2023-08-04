@@ -1,0 +1,93 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="{% static 'css/notifications.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   
+</head>
+<body>
+    
+    {%include 'navbar.html'%}
+
+    <div class="cont">
+        <div class="page">
+
+            <div class="leftpage">
+                <ul>
+                    <li><a href="{}">Dashboard</a></li>
+                    <li><a href="" >Team</a></li>
+                    <li><a href="" >Tasks</a></li>
+                    <hr>
+                    <li><a href="" >Agenda</a></li>
+                    <li><a href="" >Roadmap</a></li>
+                    <li><a href="">Messages</a></li>
+                </ul>
+            </div>
+            <div class="rightpage">
+                {%if cansee%}
+                <div class="wrap">
+                    <form name="form1" method="post" action="">
+                        {%csrf_token%}
+                        <h2>Create Project</h2>
+                        <input type="hidden" name="form_name" value="form1">
+                        <label for="">Name</label>
+                        <input type="text" name="name" id="" maxlength="15" required>
+                        <label for="">Sub-Owner</label>
+                        <input type="text" name="sub_owner" id="" maxlength="15">
+                        <button class="submit">Create</button>
+                       </form>
+                </div>
+                {%endif%}
+                {%for t in tasks%}
+                <div class="cards">
+                    <div class="cards-scontainer">
+
+
+                        <h3>{{t.name}}  :  {{t.priority}}</h3>
+                        <hr>
+                        <p>owned by : {{t.sub_owner.name}} </p>
+                        <a href="{%url 'task'%}" onclick=" setview('{{t.id_task}}')">View</a>
+                        <span>active:{{t.is_active}}</span>
+                    </div>
+                </div>
+
+                <script>
+                    function setview(which){
+                        var cookieName1 = "whichtask";
+    document.cookie = "whichtask=" + which + "; expires=Fri, 30 Jul 2023 00:00:00 UTC; path=/";
+
+    document.cookie = "whichtask=" + which;
+                    }
+                </script>
+                {%endfor%}
+            </div>
+            
+
+            <div class="hid1">
+                <ul>
+                   {%for s in subowners_list%}
+                   <li>task : {{s.name}}</li>
+                   <li>owner : {{s.subowner}}</li>
+                   <li>members:</li>
+                   {%for m1 in s.members_list%}
+                    <li>-{{m1}}</li>
+                   {%endfor%}
+                   <hr>
+                   {%endfor%}
+                   
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="{% static 'css/notifications.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    
+    {%include 'navbar.html'%}
+
+    <div class="cont">
+        <div class="page">
+
+            <div class="leftpage">
+                <ul>
+                    <li><a href="{}">Dashboard</a></li>
+                    <li><a href="" >Team</a></li>
+                    <li><a href="" >essensiels</a></li>
+                    <hr>
+                    <li><a href="" >Agenda</a></li>
+                    <li><a href="" >Roadmap</a></li>
+                    <li><a href="">Messages</a></li>
+                </ul>
+            </div>
+            <div class="rightpage">
+                <div class="brifings">
+                    {%if cansee%}
+                    <form id="forma" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="header" value="{{header}}" >
+                        <textarea name="content" rows="4" maxlength="150" placeholder="Type here..." >{{content}}</textarea>
+                        <span>startat:{{startat|date:"M. d, Y" }}</span>
+                        <span id="spnend">deadline :{{deadline|date:"M. d, Y" }}</span>
+                        <label for="">change deadline</label>
+                        <input type="date" name="deadline" value="{{deadline|date:"M. d, Y"}}">
+                        <button  type="submit">Save</button>
+                    </form>
+                    <script>
+                        sbmt=document.getElementById('forma').addEventListener("submit",function(event){
+
+                            console.log("here it is");
+
+                        });
+                    </script>
+                    {%else%}
+                    <div class="bri">
+                        <h2>{{header}}</h2>
+                    <label for="">
+                        description:
+                    </label>
+                    <p>{{content}}</p>
+                    <span>startat:{{startat|date:"M. d, Y" }}</span>
+                    <span id="spnend">deadline :{{deadline|date:"M. d, Y"}}</span>
+                    </div>
+                    {%endif%}
+                    <div class="attachememnts">
+                        <ul>
+                            <li><a href="">link1</a></li>
+                            <li><a href="">link2</a></li>
+                            <li><a href="">link3</a></li>
+                        </ul>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="hid1">
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

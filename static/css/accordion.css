@@ -1,0 +1,62 @@
+html,body, h1, h2, h3, p, ul, li, button {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    
+  }
+.dropdown {
+    cursor: pointer;
+    display: block;
+    padding: 15px 15px 15px 45px;
+    
+    border-bottom: 2px solid black;
+    text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      color: black;
+    position: relative;
+    transition: all 0.4s ease-out;
+}
+
+  
+.dropdown  i {
+    position: absolute;
+    top: 17px;
+    left: 16px;
+}
+
+.dropdown .fa-chevron-down {
+    right: 12px;
+    left: auto;
+    transition: transform 0.2s ease-in-out;
+}
+
+.submenuItems {
+    display: none;
+    
+    transition: all 2s ease-in-out;
+}
+
+.accordion-menu li.active .submenuItems{
+    display: block;
+}
+
+.submenuItems a {
+    display: block;
+    color: #66b2ff;
+    font-weight: 600;
+    padding: 12px 12px 12px 45px;
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+}
+
+.submenuItems a:hover {
+    background-color: blue;
+    color: #fff;
+  }
+
+

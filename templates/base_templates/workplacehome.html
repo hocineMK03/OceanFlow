@@ -1,0 +1,193 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMsystem</title>
+    <link rel="stylesheet" href="{% static 'css/workspacehome.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    {%include 'navbar.html'%}
+
+    
+    <div class="wrapper">
+        <div class="page">
+            <div class="leftpage">
+                <form name="form1" method="post" action="">
+                    {%csrf_token%}
+                    <h2>Create Project</h2>
+                    <input type="hidden" name="form_name" value="form1">
+                    <input type="text" name="name" id="" maxlength="15">
+                    <button class="submit">Create</button>
+                   </form>
+    
+                   <h2>Recent Projects</h2>
+                   <div class="types">
+                   <a href=""> <button id="btn1" type="button" onclick="setwhichwork(1)">Created</button></a>
+                    <a href=""><button id="btn2" type="button" onclick="setwhichwork(2)">Joined</button></a>
+                   </div>
+                   <script>
+                   
+                    function setwhichwork(which){
+    var cookieName1 = "whichwork";
+    document.cookie = "whichwork=" + which + "; expires=Fri, 30 Jul 2023 00:00:00 UTC; path=/";
+
+    document.cookie = "whichwork=" + which;
+    console.log("setwhichwork function called with parameter:", which);
+}
+                   </script>
+                   {%for w in work%}
+                   <div class="card">
+                    <h3>{{w.name}}</h3>
+                    <hr>
+                    <p>description of this current project you can change it later</p>
+                    <div class="dropdown-menu">
+                        <button id="dlt"><i class="fa-solid fa-ellipsis-vertical"></i> </button>
+                        <div class="dropdown-content-menu">
+                        <a  id="share" onclick="shareurl('{{ w.id_workspace }}');">Share</a>
+                        <a href="" id="edit">Edit</a>
+                        <a href="" id="delete">Delete</a>
+                        </div>
+                      </div>
+                    <div class="btnwrap">
+                   
+                   <a href="{%url 'workplace'%}" onclick="setWorkspaceIdCookie('{{ w.id_workspace }}')"><button>View Workspace</button></a>
+                   <script src="../../static/js/encodingtest.js"></script>
+
+                   
+                 
+                <script>
+                    window.onload = function() {
+  var cookieName = "workspace_id";
+  document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+ 
+}
+                    function setWorkspaceIdCookie(id_workspace) {
+                        var encoded=init1(id_workspace);
+                        console.log(encoded);
+                        document.cookie = "workspace_id=" + encoded;
+                    
+                    }
+
+
+                  function shareurl(id_workspace1){
+                    console.log("before",id_workspace1);
+                    var encoded1=init1(id_workspace1);
+                    console.log(encoded1);
+                    var message = "";
+                    message=" Encoded value: " + encoded1;
+                alert(message);
+                  }
+
+
+                    </script>
+                </div>
+               </div>
+               {%endfor%}
+               
+                  
+               {%for w1 in work2%}
+                   <div class="card">
+                    <h3>{{w1.id_workspace.name}}</h3>
+                    <hr>
+                    <p>description of this current project you can change it later</p>
+                    <div class="dropdown-menu">
+                        <button id="dlt"><i class="fa-solid fa-ellipsis-vertical"></i> </button>
+                        <div class="dropdown-content-menu">
+                        <a  id="share" onclick="shareurl('{{ w1.id_workspace.id_workspace }}');">Share</a>
+                        <a href="" id="edit">Edit</a>
+                        <a href="" id="delete">Delete</a>
+                        </div>
+                      </div>
+                    <div class="btnwrap">
+                   
+                   <a href="{%url 'workplace'%}" onclick="setWorkspaceIdCookie('{{ w1.id_workspace.id_workspace }}')"><button>View Workspace</button></a>
+                   <script src="../../static/js/encodingtest.js"></script>
+
+                   
+                 
+                <script>
+                    window.onload = function() {
+  var cookieName = "workspace_id";
+  document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+ 
+}
+                    function setWorkspaceIdCookie(id_workspace) {
+                        var encoded=init1(id_workspace);
+                        console.log(encoded);
+                        document.cookie = "workspace_id=" + encoded;
+                    
+                    }
+
+
+                  function shareurl(id_workspace1){
+                    console.log("before",id_workspace1);
+                    var encoded1=init1(id_workspace1);
+                    console.log(encoded1);
+                    var message = "";
+                    message=" Encoded value: " + encoded1;
+                alert(message);
+                  }
+
+
+                    </script>
+                </div>
+               </div>
+               {%endfor%}
+
+
+
+
+
+
+
+
+
+
+
+                  
+    
+            </div>
+            <div class="rightpage">
+                <div class="imgwrap">
+                    <img src="../../static/images/4901359.jpg" alt="">
+                </div>
+                
+             <form name="form2" method="post" action="">
+                {%csrf_token%}
+                <h2>Join Current Project </h2>
+                <label for="URL:"></label>
+                <input type="hidden" name="form_name" value="form2">
+                <input type="hidden" name="decoded_url" id="decoded_url">
+                <input type="text" name="urltxt" placeholder="URL:" >
+                <button id="sbmt1" type="submit">Join</button>
+             </form>
+            </div>
+            <script src="../../static/js/decodingtest.js"></script>
+            <script>
+                document.getElementById('sbmt1').addEventListener("click", function(event) {
+                    
+                    event.preventDefault();
+                    var geturlworkspace = document.getElementsByName("urltxt")[0].value;
+                    var decoded = init(geturlworkspace);
+                    
+                    document.getElementById("decoded_url").value = decoded;
+                    document.form2.submit(); // Submit the form to the backend after decoding
+                });
+            </script>
+            
+            <footer class="footer">
+                <div class="div1">
+                  <a href="">Contact</a>
+                  <a href="">Feedback</a>
+                  <a href="">Add ticket</a>
+                  </div>
+                  <div><p>&copy; 2023 TMsystem. All rights reserved.</p></div>
+              </footer>
+        </div>
+    </div>
+</body>
+</html>

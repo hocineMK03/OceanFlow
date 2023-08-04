@@ -1,0 +1,38 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/logandreg.css'%}?v={{ version_number }}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  
+    
+    
+  
+   <form action="" method="post">
+    {%csrf_token%}
+    <div class="menu">
+
+        <h2 >Register</h2>
+        <label for="">Name</label>
+        <input type="text" required="required" name="Name" id="">
+        <label for="">Username</label>
+        <input type="text" required="required" name="Username" id="">
+        <label for="">Email</label>
+        <input type="text" required="required" name="Email" id="">
+        
+        <label for="">Pasword</label>
+        <input type="text" required="required" name="Password" id="">
+        
+        <button type="submit" >register</button>
+        <p>already have an account ?<a href="{%url 'log'%}">Login</a> now !</p>
+   </form>
+  
+</body>
+</html>

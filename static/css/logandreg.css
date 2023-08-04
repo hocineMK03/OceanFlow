@@ -1,0 +1,113 @@
+html,body, h1, h2, h3, p, ul, li, button {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin: 20px;
+}
+
+.menu {
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  width: 250px;
+ min-height:350px;
+ max-height: 650px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  backdrop-filter: blur(50px);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: rgb(29, 29, 29);
+  margin-bottom: 20px;
+}
+
+.menu label {
+  text-align: left;
+  font-size: 17px;
+  font-weight: 500;
+  color:rgb(29, 29, 29);
+  margin-bottom: 5px;
+}
+
+.menu input {
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 200;
+  transition: .2s ease-in;
+}
+.menu button{
+  width: 85%;
+  height: 40px;
+  margin: 12px auto 10%;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: .2s ease-in;
+ }
+ 
+
+ .menu input:focus{
+  transform: scale(1.1); 
+ }
+ .menu button:hover{
+   color: white;
+   background: blue;
+   transform: scale(1.1); 
+   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+ }
+
+ .menu p{
+  text-align: center;
+ }
+ .menu p a{
+  color: blue;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

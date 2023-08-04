@@ -1,0 +1,174 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="{% static 'css/notifications.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css'%}?v={{ version_number }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    
+
+    <div class="cont">
+        
+        
+        
+
+    <nav>
+        <ul>
+            <li><a id="logo" href="{%url 'home'%}">TM<span>system</span></a>
+            </li>
+        </ul>
+        
+        <ul>
+            
+            
+            <li><a href="{%url 'afterlog'%}">Workplace</a>
+                
+            </li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="">Support</a></li>
+        </ul>
+      
+        <ul>
+            
+            
+            <li><a href="{%url 'contactus'%}">Contact Us</a></li>
+            <li><div class="dropdown">
+                <a href=""><button class="dropbtn">Profile</button></a>
+                <div class="dropdown-content">
+                  <a href="#">View Profile</a>
+                  <a href="#">Inbox</a>
+                  
+                  <a href="{%url 'afterlog'%}">Workspace</a>
+                  <hr>
+                  <a href="{%url 'logout'%}">Logout</a>
+                </div>
+              </div></li>
+            
+            
+
+            
+        </ul>
+    </nav>
+        
+        <div class="page">
+        <div class="leftpage">
+            <ul>
+                <li><a href="{%url 'afterlog'%}">Dashboard</a></li>
+                <li><a href="" onclick="setwhichnotif(1)">Notifications</a></li>
+                <li><a href="" onclick="setwhichnotif(2)">Messages</a></li>
+                <hr>
+                <li><a href="" onclick="setwhichnotif(3)">Approvals</a></li>
+                <li><a href="" onclick="setwhichnotif(4)">WaitList</a></li>
+                <li><a href="">Messages</a></li>
+            </ul>
+            
+        </div>
+        <script>
+
+
+function setwhichnotif(which){
+    var cookieName = "whichnotif";
+  document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "whichnotif=" + which;
+}
+
+        </script>
+        <div class="rightpage">
+       
+            {% if "first" in tmp %}
+          {%if theobj%}
+          {%for n in theobj%}
+            <div class="cards">
+                <div class="cards-scontainer">
+                    <h3>{{n.notificationheader}}</h3>
+                    <hr>
+                    <p>{{n.notificationbody}} </p>
+                    <span> {{n.created_at}}</span>
+                </div>
+            </div>
+           {%endfor%}
+           {%else%}
+           nothing yet
+           {%endif%}
+
+           {%elif "second" in tmp %}
+            no messages
+           {%elif "third" in tmp%}
+
+          
+          {%if theobj%}
+          {%for n in theobj%}
+            <div class="cards">
+                <div class="cards-scontainer">
+                    <h3>{{n.id_workspace.name}} from {{n.id_workspace.owner.name}}</h3>
+                    <hr>
+                    <p>pending...</p>
+                </div>
+            </div>
+           {%endfor%} 
+          {%else%}
+         no demands not accepted
+          {%endif%}
+         {%else%}
+         {%if lista%}
+         {%for obj in lista%}
+            
+            <div class="cards">
+                <div class="cards-scontainer">
+                    <h3>{{obj.id_workspace.name}}</h3>
+                    <hr>
+                    <p>{{obj.member.name}} wants to join the workspace "{{obj.id_workspace.name}}"</p>
+                    <span> {{obj.created_at}}</span>
+                    
+                        <form name="form1" action="" method="post">
+                            {%csrf_token%}
+                            <input type="hidden" name="hiddenid" value="{{obj.id_workspace.id_workspace}}">
+                            <input type="hidden" name="hiddenmember" value="{{obj.member.id}}">
+                            <div class="btns">
+                                <button type="submit" id="accept" onclick="setwhichbutton(1)"><i class="fa-solid fa-check fa-xl"></i></button>
+                            <button id="decline" type="submit" onclick="setwhichbutton(2)"><i class="fa-solid fa-xmark fa-xl"></i></button>
+                            </div>
+                        </form>
+                    
+                </div>
+            </div>
+            
+         {%endfor%}
+         {%else%}
+         {%if theobj%}
+         {%for n in theobj%}
+           <div class="cards">
+               <div class="cards-scontainer">
+                   <h3>{{n.notificationheader}}</h3>
+                   <hr>
+                   <p>{{n.notificationbody}} </p>
+                   <span> {{n.created_at}}</span>
+               </div>
+           </div>
+          {%endfor%}
+          {%else%}
+          nothing yet
+          {%endif%}
+         {%endif%}
+          {%endif%}
+        </div>
+       <script>
+         function setwhichbutton(which){
+            var cookieName = "whichbutton";
+          document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "whichbutton=" + which;
+
+        }
+       </script>
+
+        <div class="hid"></div>
+    </div>
+  </div>
+</body>
+</html>

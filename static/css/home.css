@@ -1,0 +1,355 @@
+/* Reset some default browser styles */
+html,body, h1, h2, h3, p, ul, li, button {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  
+  
+}
+
+
+.wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-image: url("../images/one-person-working-table-with-coffee-generated-by-ai.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  
+}
+
+
+.startingtitleprinc{
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Align to the left horizontally */
+  height: 100vh;
+}
+.startingtitle {
+  display: flex; /* Add flex display */
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Align to the left horizontally */
+    min-width: 40%;
+    max-width: 50%;
+    height: 50%; /* Set the container height to full viewport height */
+    background-color: rgba(0, 0, 0, 0.2);
+   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+.startingtitle h2 {
+  margin: 10px;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: rgb(247, 247, 247);;
+}
+
+.startingtitle p {
+  margin: 10px;
+  text-align: center;
+  font-size: 20px;
+  color:rgb(247, 247, 247);
+}
+.startingtitle hr{
+  margin: 10px;
+  right: 100%;
+  left: 0;
+  width: 40%;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  margin-top: 20px;
+  width: 80%;
+ 
+  gap: 40px;
+}
+
+
+#btn1 {
+  padding: 0 20px;
+  position: relative;
+  border: 1px solid #573b8a;
+  background: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 500;
+  width: 80%;
+  transition: 1.2s;
+  cursor: pointer;
+  color:rgb(247, 247, 247);
+  
+  overflow: hidden; /* Add overflow hidden to clip the ::before element */
+}
+
+#btn1::before {
+  
+  content: "";
+  position: absolute;
+  width: 5%; /* Set the initial width to 0 */
+  height: 100%;
+  background: #573b8a;
+  top: 0;
+  left: 0;
+  /* Center the pseudo-element horizontally */
+  z-index: -1;
+  transition: 1s;
+}
+
+#btn1:hover::before {
+  width: 100%; /* Expand the width to 100% on hover */
+  z-index: 1;
+  opacity: 0; /* Hide the ::before pseudo-element on hover */
+  
+}
+
+#btn1:hover {
+  color: white;
+  font-weight: 500;
+  background-color:#573b8a ;
+}
+
+
+
+
+#btn2 {
+  padding: 0 20px;
+  position: relative;
+  border: 1px solid #573b8a;
+  background: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 500;
+  width: 40%;
+  transition: 1.2s;
+  cursor: pointer;
+  color:rgb(247, 247, 247);
+  
+  overflow: hidden; /* Add overflow hidden to clip the ::before element */
+}
+
+#btn2::before {
+  content: "";
+  position: absolute;
+  width: 95%; /* Set the initial width to 0 */
+  height: 100%;
+  background: #573b8a;
+  top: 0;
+  right: 0;
+  /* Center the pseudo-element horizontally */
+  z-index: -1;
+  transition: 1s;
+}
+
+#btn2:hover::before {
+  width: 0%; /* Expand the width to 100% on hover */
+  z-index: 1;
+  opacity: 0; /* Hide the ::before pseudo-element on hover */
+}
+
+#btn2:hover {
+  color: white;
+  font-weight: 500;
+  background-color :transparent ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px;
+    margin: 10px;
+}
+
+
+.wrap nav ul li{
+list-style-type: none;
+display: inline-block;
+margin: 0 15px;
+}
+
+.wrap nav ul li a{
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgb(247, 247, 247);
+}
+.wrap nav #logo{
+  font-size: 25px; 
+}
+.wrap nav ul li span{
+  color: red;
+}
+.wrap nav ul li a:hover   {
+  color: blue;
+  
+}
+
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  right: 10px;
+  width: 100%;
+}
+
+.wrap .dropbtn {
+  position: relative;
+  background-color: transparent;
+  color: rgb(247, 247, 247);
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  min-width: 100%;
+  max-width: 200px;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid #573b8a;
+  transition: 0.8s;
+}
+.wrap .dropbtn::before{
+ 
+  position: absolute;
+  border-radius:8px;
+  content:"";
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  height: 100%;
+  background:  #573b8a;
+  z-index: -1;
+  transition: 0.8s;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 5%;
+}
+
+.wrap .dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  
+}
+.dropdown-content a:hover {
+  background-color: #eeecec;
+  color: #333;
+}
+
+.dropdown:hover .dropbtn {
+  background:  #573b8a;
+  color: white;
+}
+.dropbtn:hover::before{
+ 
+  width: 100%; /* Expand the width to 100% on hover */
+  z-index: 1;
+ opacity: 0;
+}
+
+.dropbtn:hover{
+ 
+ color: white;
+ background-color :transparent ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footer{
+  justify-content: flex-end;
+  height: 100px;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+ 
+}
+
+footer {
+  
+  
+  position: relative;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+
+  color: white;
+  height: 100%;
+
+}
+
+footer a{
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+  }
+footer p{
+  justify-content: start;
+  text-align: center;
+    font-size: 17px;
+  }
+
+footer a:hover{
+    color: red;
+  }
+  
+

@@ -1,0 +1,96 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMsystem</title>
+    <link rel="stylesheet" href="{% static 'css/home.css'%}?v={{ version_number }}">
+</head>
+<body>
+    <div class="wrap">
+        <nav>
+            <ul>
+                <li><a id="logo" href="">TM<span>system</span></a>
+                </li>
+            </ul>
+            
+            <ul>
+                
+                <li><a href="{%url 'aboutus'%}">Why TMsystem</a></li>
+                <li><a href="">Features</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">Support</a></li>
+            </ul>
+          
+            <ul>
+                
+               
+                {%if authent%}
+                
+                <li><a href="{%url 'contactus'%}">Contact Us</a></li>
+                <li><div class="dropdown">
+                    <a href=""><button class="dropbtn">Profile</button></a>
+                    <div class="dropdown-content">
+                      <a href="#">View Profile</a>
+                      <a href="#">Inbox</a>
+                      <a href="{%url 'notifications'%}">Notifications</a>
+                      <a href="{%url 'afterlog'%}">Workspace</a>
+                      <hr>
+                      <a href="{%url 'logout'%}">Logout</a>
+                    </div>
+                  </div></li>
+                
+                {%else%}
+               
+                <li><a href="{%url 'contactus'%}">Contact Us</a></li>
+                <li><a href="{%url 'log'%}">Login</a></li>
+                <li><a href="{%url 'reg'%}">Register</a></li>
+                {%endif%}
+                
+            </ul>
+        </nav>
+    
+        <div class="startingtitleprinc">
+            <div class="startingtitle">
+                <h2>Welcome to TMsystem</h2>
+                <hr>
+                <p>A Powerful Task Management System to Streamline Your Workflow . <br>Want to drive efficiency across your organization? TMsystem is lexible and easy for all teams to use</p>
+                <div class="btn">
+                    <button  id="btn1">Get started</button>
+                    <button id="btn2">See more</button>
+                </div>
+                <script>
+                    const btn1 = document.getElementById('btn1');
+                    const btn2 = document.getElementById('btn2');
+                    
+                    btn1.addEventListener('click', () => {
+                        // Redirect the user to the "Get Started" page URL
+                        
+                        window.location.href = "register";
+                    });
+                
+                    btn2.addEventListener('click', () => {
+                        // Redirect the user to the "See How It Works" page URL
+                        window.location.href = "home/AboutUs";
+                    });
+                </script>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <footer>
+                <div class="div1">
+                  <a href="">Contact</a>
+                  <a href="">Feedback</a>
+                  <a href="">Add ticket</a>
+                  </div>
+                  <div><p>&copy; 2023 TMsystem. All rights reserved.</p></div>
+              </footer>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
